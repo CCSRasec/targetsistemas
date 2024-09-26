@@ -1,0 +1,30 @@
+Modelo Lógico (ER):
+Tabelas e Relacionamentos:
+Clientes:
+
+PK: ID_Cliente (chave primária)
+FK: Estado (chave estrangeira, referenciando a tabela Estados)
+Telefones:
+
+PK: ID_Telefone (chave primária)
+FK: ID_Cliente (chave estrangeira, referenciando a tabela Clientes)
+FK: Tipo_Telefone (chave estrangeira, referenciando a tabela Tipos_Telefone)
+Tipos_Telefone:
+
+PK: ID_Tipo_Telefone (chave primária)
+Estados:
+
+PK: ID_Estado (chave primária)
+Relacionamentos:
+Um cliente pode ter vários telefones, mas um telefone pertence a apenas um cliente.
+Um telefone tem um tipo, como residencial, comercial, etc.
+Cada cliente está localizado em um estado.
+
+
+
+Consulta SQL
+SELECT C.ID_Cliente, C.Razao_Social, T.Numero_Telefone
+FROM Clientes C
+JOIN Telefones T ON C.ID_Cliente = T.ID_Cliente
+JOIN Estados E ON C.Estado = E.ID_Estado
+WHERE E.UF = 'SP';
